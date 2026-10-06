@@ -1,0 +1,422 @@
+---
+import "../styles/global.css";
+import Icon from "../components/Icon.astro";
+import VideoShowcase from "../components/VideoShowcase.astro";
+import ScreenshotFrame from "../components/ScreenshotFrame.astro";
+import { demoVideo } from "../data/showcase";
+const repo = "https://github.com/hossainemruz/devcroft";
+const agents = [
+  { name: "Claude Code", icon: "claude" },
+  { name: "Codex", icon: "codex" },
+  { name: "OpenCode", icon: "opencode" },
+  { name: "Oh My Pi", icon: "omp" },
+];
+const details = [
+  {
+    icon: "code",
+    title: "An editor that fits the moment.",
+    text: "Make a quick change in the built-in editor, settle into Neovim, or open your checkout in Zed or VS Code.",
+  },
+  {
+    icon: "terminal",
+    title: "Your shell, right at home.",
+    text: "Independent terminal sessions keep running as you switch tabs, with your aliases, environment, and tools intact.",
+  },
+  {
+    icon: "keyboard",
+    title: "Keep your hands on the keys.",
+    text: "Jump between projects, find a file, or navigate your workspace with command palettes and a dedicated navigation mode.",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Devcroft — A home for your development flow</title>
+    <meta
+      name="description"
+      content="Bring your coding agents, editor, terminal, code reviews, and project knowledge into one native desktop workspace. Meet Devcroft."
+    />
+    <meta name="theme-color" content="#f8f9f5" />
+    <link rel="canonical" href="https://devcroft.hossainemruz.dev/" />
+    <link rel="icon" type="image/png" href="/images/devcroft.png" />
+    <link
+      rel="preload"
+      href="/fonts/GoogleSansFlex-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Devcroft — A home for your development flow"
+    />
+    <meta
+      property="og:description"
+      content="Your agents, code, and context. One native workspace."
+    />
+    <meta property="og:url" content="https://devcroft.hossainemruz.dev/" />
+    <meta
+      property="og:image"
+      content="https://devcroft.hossainemruz.dev/images/social.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <header class="site-header container">
+      <a class="brand" href="/" aria-label="Devcroft home">
+        <img src="/images/devcroft.png" width="33" height="33" alt="" />
+        devcroft<span class="brand-period">.</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#workflow">Workflow</a>
+        <a class="nav-github" href={repo}>
+          GitHub <Icon name="external" size={14} />
+        </a>
+      </nav>
+      <a class="button button-small" href="#download">
+        Get Devcroft <Icon name="download" size={15} />
+      </a>
+    </header>
+    <main id="main">
+      <section class="hero container">
+        <div class="eyebrow">
+          <span class="live-dot"></span> A NATIVE WORKSPACE FOR THE WAY YOU
+          BUILD
+        </div>
+        <h1>
+          Less switching.
+          <br />
+          More <span class="serif">making.</span>
+        </h1>
+        <p class="hero-description">
+          Your agents, code, and context. Finally together.
+          <br class="desktop-break" /> A calmer place to take your next idea all
+          the way.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#download">
+            <Icon name="download" size={18} /> Download Devcroft
+          </a>
+          <a class="text-button" href="#demo">
+            <span class="play-circle">
+              <Icon name="play" size={12} />
+            </span>{" "}
+            {demoVideo.src
+              ? "Watch the walkthrough"
+              : "Preview the video layout"}{" "}
+            <Icon name="arrow" size={16} />
+          </a>
+        </div>
+        <div class="hero-meta">
+          Built with Rust & GPUI <span>·</span> Open source <span>·</span> Yours
+          to make your own
+        </div>
+        <VideoShowcase />
+      </section>
+      <section
+        class="agents-section container"
+        aria-label="Supported coding agents"
+      >
+        <p>THE AGENTS YOU KNOW. A WORKSPACE YOU’LL LOVE.</p>
+        <div class="agent-logos">
+          {agents.map((agent) => (
+            <div>
+              <img
+                src={`/images/${agent.icon}.svg`}
+                width="27"
+                height="27"
+                alt=""
+              />
+              <span>{agent.name}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section class="features-section container" id="features">
+        <div class="section-heading">
+          <div class="eyebrow">A LITTLE LESS FRICTION</div>
+          <h2>
+            Stay close to <span class="serif">the work.</span>
+          </h2>
+          <p>
+            From the first prompt to the final review,
+            <br />
+            everything belongs to the same conversation.
+          </p>
+        </div>
+        <div class="feature-pair">
+          <article class="feature-copy">
+            <span class="feature-number">01 / BUILD WITH YOUR AGENT</span>
+            <h3>
+              Your favorite agent.
+              <br />A place to <span class="serif">pick up.</span>
+            </h3>
+            <p>
+              Bring Claude Code, Codex, OpenCode, or Oh My Pi. Resume a
+              project’s recent session or start fresh with the harness that fits
+              the task.
+            </p>
+            <p>
+              Your familiar shell environment comes along. Your sessions stay
+              alive as you move through the workspace.
+            </p>
+            <a
+              class="inline-link"
+              href={`${repo}/blob/main/README.md#agent-skill`}
+            >
+              Meet your new workspace <Icon name="arrow" size={16} />
+            </a>
+          </article>
+          <ScreenshotFrame name="agent" />
+        </div>
+        <div class="feature-pair reverse">
+          <article class="feature-copy">
+            <span class="feature-number">02 / CLOSE THE FEEDBACK LOOP</span>
+            <h3>
+              Review the change.
+              <br />
+              Keep the <span class="serif">conversation.</span>
+            </h3>
+            <p>
+              Read a syntax-highlighted diff. Leave a comment on a line or a
+              range. Let your agent pick up that feedback directly through the
+              Devcroft CLI.
+            </p>
+            <p>
+              Comments stay with their branch pair and scope, so your feedback
+              has a home beyond the chat.
+            </p>
+            <a
+              class="inline-link"
+              href={`${repo}/blob/main/docs/review-comments.md`}
+            >
+              A closer look at review <Icon name="arrow" size={16} />
+            </a>
+          </article>
+          <ScreenshotFrame name="review" />
+        </div>
+        <div class="feature-pair">
+          <article class="feature-copy">
+            <span class="feature-number">03 / GIVE CONTEXT A HOME</span>
+            <h3>
+              The thinking behind
+              <br />
+              the <span class="serif">code.</span>
+            </h3>
+            <p>
+              Plans, RFCs, notes, reviews, and visual tutorials live alongside
+              their repository. Read them, refine them, and return to the agent
+              session where they began.
+            </p>
+            <p>
+              Your agent can create resources and read comments through the same
+              CLI. Good context doesn’t have to get lost in a scrollback.
+            </p>
+            <a class="inline-link" href={`${repo}/blob/main/docs/resources.md`}>
+              Explore repository resources <Icon name="arrow" size={16} />
+            </a>
+          </article>
+          <ScreenshotFrame name="resources" />
+        </div>
+      </section>
+      <section class="workflow-section" id="workflow">
+        <div class="container">
+          <div class="section-heading">
+            <div class="eyebrow">THE BIG PICTURE, WITHIN REACH</div>
+            <h2>
+              A home for <span class="serif">all of it.</span>
+            </h2>
+            <p>
+              Multiple projects. Different contexts.
+              <br />
+              One thoughtful place to start your day.
+            </p>
+          </div>
+          <div class="overview-grid">
+            <article class="overview-card dashboard-card">
+              <ScreenshotFrame name="dashboard" compact />
+              <div class="overview-copy">
+                <Icon name="grid" />
+                <h3>Start with a little clarity.</h3>
+                <p>
+                  Recent projects, pull requests, todos, and things to read.
+                  Separate work and personal projects with Spaces, or see
+                  everything together.
+                </p>
+              </div>
+            </article>
+            <article class="overview-card graph-card">
+              <ScreenshotFrame name="relationships" compact />
+              <div class="overview-copy">
+                <Icon name="branch" />
+                <h3>See how the pieces connect.</h3>
+                <p>
+                  Map providers and consumers on a repository canvas. Give each
+                  project a purpose, and let agents query the relationships
+                  through the CLI.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="details-section container">
+        <div class="detail-intro">
+          <span class="eyebrow">THE EVERYDAY ESSENTIALS</span>
+          <h2>
+            Feels familiar.
+            <br />
+            <span class="serif">Flows better.</span>
+          </h2>
+        </div>
+        <div class="detail-grid">
+          {details.map((item) => (
+            <article>
+              <span class="detail-icon">
+                <Icon name={item.icon} size={22} />
+              </span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+        <div class="keyboard-strip">
+          <span>A few keys. A lot less reaching.</span>
+          <div>
+            <kbd>⌘ K</kbd> Commands
+          </div>
+          <div>
+            <kbd>⌘ P</kbd> Projects
+          </div>
+          <div>
+            <kbd>⌘ J</kbd> Navigation
+          </div>
+          <small>Use Ctrl on Linux.</small>
+        </div>
+      </section>
+      <section class="download-section container" id="download">
+        <div class="download-inner">
+          <img
+            src="/images/devcroft.png"
+            width="76"
+            height="76"
+            alt="Devcroft app icon"
+            loading="lazy"
+          />
+          <div class="eyebrow">MAKE ROOM FOR YOUR NEXT IDEA</div>
+          <h2>
+            Your work.
+            <br />A little more <span class="serif">together.</span>
+          </h2>
+          <p>
+            A native workspace, built with care.
+            <br />
+            Open source, and ready to become part of your flow.
+          </p>
+          <div class="download-options">
+            <a class="button" href="#download-status" data-download="macOS">
+              <Icon name="download" size={18} /> Download for macOS
+            </a>
+            <a
+              class="button button-outline"
+              href="#download-status"
+              data-download="Linux"
+            >
+              <Icon name="download" size={18} /> Download for Linux
+            </a>
+          </div>
+          <p class="download-note" id="download-status" role="status">
+            Release downloads are coming soon. These are preview links.
+          </p>
+          <a class="inline-link" href={`${repo}#requirements`}>
+            Build from source in the meantime <Icon name="external" size={15} />
+          </a>
+        </div>
+        <span class="download-orbit" aria-hidden="true"></span>
+      </section>
+      <section class="faq-section container">
+        <h2>
+          A few things <span class="serif">to know.</span>
+        </h2>
+        <div class="faq-list">
+          <details>
+            <summary>
+              Does Devcroft include an AI model?<span>+</span>
+            </summary>
+            <p>
+              Devcroft brings your existing coding agents into a shared
+              workspace. Install and authenticate Claude Code, Codex, OpenCode,
+              or Oh My Pi separately. Your chosen agent manages its own models
+              and subscriptions.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Can I keep using my editor?<span>+</span>
+            </summary>
+            <p>
+              Yes. Choose the built-in editor for small edits or Neovim for your
+              familiar workflow. You can also enable installed Zed or VS Code
+              launchers to open the checkout externally.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Where does my project context live?<span>+</span>
+            </summary>
+            <p>
+              Devcroft stores its records locally. Portable records, including
+              resources and dashboard items, can sync through Git. Your chosen
+              coding agent has its own data handling settings.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Is Devcroft open source?<span>+</span>
+            </summary>
+            <p>
+              Yes. Devcroft is licensed under MIT. Explore the code, build the
+              app, or contribute on <a href={repo}>GitHub</a>.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer container">
+      <div>
+        <a class="brand" href="/">
+          <img src="/images/devcroft.png" width="27" height="27" alt="" />
+          devcroft<span class="brand-period">.</span>
+        </a>
+        <p>A small workspace for good work.</p>
+      </div>
+      <div class="footer-links">
+        <a href={`${repo}/blob/main/README.md`}>
+          Documentation <Icon name="external" size={13} />
+        </a>
+        <a href={repo}>
+          GitHub <Icon name="external" size={13} />
+        </a>
+        <a href="https://hossainemruz.dev">
+          Made by Emruz <Icon name="external" size={13} />
+        </a>
+      </div>
+      <span class="footer-bottom">
+        Built with care. Shared with everyone.{" "}
+        <span>© {new Date().getFullYear()} Devcroft · MIT</span>
+      </span>
+    </footer>
+    <script>
+      import "../scripts/showcase";
+    </script>
+  </body>
+</html>

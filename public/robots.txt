@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://devcroft.hossainemruz.dev/sitemap-index.xml
